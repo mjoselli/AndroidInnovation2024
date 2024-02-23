@@ -55,7 +55,8 @@ In this project, you will develop an Android application that interfaces with a 
 - Submit the zipped source code of the Android application and the project report in PDF format.
 - Ensure the ZIP file contains the complete Android Studio project folder.
 - Name the ZIP file and PDF report according to the following convention: `GroupName_BluetoothRobotController.zip` and `GroupName_ProjectReport.pdf`.
-- Deadline: 24/02/2024.
+- Groups of 2/3
+- Deadline: 24/03/2024.
 
 This project combines software development skills with practical applications in robotics and Bluetooth communication. It offers an opportunity to learn about Android programming, user interface design, and wireless communication protocols. Good luck!
 
