@@ -21,6 +21,8 @@ Open your `AndroidManifest.xml` and add the following permissions above the `<ap
 <uses-permission android:name="android.permission.BLUETOOTH"/>
 <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 ```
 
 For Android 6.0 (API level 23) and higher, you must request the location permission at runtime to discover Bluetooth devices. 
