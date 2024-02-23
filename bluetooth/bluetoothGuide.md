@@ -25,6 +25,12 @@ Open your `AndroidManifest.xml` and add the following permissions above the `<ap
 
 ```
 
+For services running on Android 10 and higher cannot discover Bluetooth devices unless they have the ACCESS_BACKGROUND_LOCATION permission. So in that case we need this permission as well:
+```xml
+<uses-permission android:name="android.permission. ACCESS_BACKGROUND_LOCATION"/>
+
+```
+
 For Android 6.0 (API level 23) and higher, you must request the location permission at runtime to discover Bluetooth devices. 
 
 ### Step 3: Design the UI with ConstraintLayout
@@ -48,7 +54,7 @@ Example of adding a Button in XML:
 
 ### Step 4: Request Runtime Permissions
 
-In your `MainActivity.java`, request location permissions at runtime before starting the Bluetooth operations. This is required for device discovery.
+In your `MainActivity.java`, request location permissions at runtime before starting the Bluetooth operations. This is required for device discovery. This code bellow works for Android < 10. 
 
 ```java
 if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -58,6 +64,19 @@ if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCA
             MY_PERMISSIONS_REQUEST_LOCATION);
 }
 ```
+If you have Android > 10, use the following code:
+
+```java
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+    if (ContextCompat.checkSelfPermission(this,
+        android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
+        != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    PERMISSION_CODE)
+        }
+}```
 
 Handle the permission result to proceed or abort Bluetooth operations based on the user's response.
 
